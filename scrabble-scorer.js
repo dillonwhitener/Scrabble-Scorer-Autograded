@@ -21,8 +21,7 @@ const vowelBonusStructure = {
    3: ['A', 'E', 'I', 'O', 'U']
 };
 
-let enteredWord = ""
-let selected
+let enteredWord
 
 let oldScrabbleScorer={   
 name: 'Scrabble',
@@ -52,7 +51,7 @@ return letterPoints;
 
 function initialPrompt() {
    enteredWord = input.question("Let's play some scrabble!\n\n Enter a word: ");
-   
+   return enteredWord
 };
 
 function simpleScorer(word){
@@ -125,17 +124,7 @@ const scoringAlgorithms = [simple, vowelBonus, scrabble];
 function scorerPrompt() {
    
    enteredAlgorithm = input.question("Which scoring algorithm would you like to use?\n\n 0 - Simple: One point per character\n 1 - Vowel Bonus: Vowels are worth 3 points\n 2 - Scrabble: Uses scrabble point system\n Enter 0, 1, or 2: ");
-   if (enteredAlgorithm == 0 ){
-     selected = scoringAlgorithms[0]
-
-   }if (enteredAlgorithm == 1 ){
-     selected = scoringAlgorithms[1]
-
-   }if (enteredAlgorithm == 2 ){
-     selected = scoringAlgorithms[2]
-
-   }
-   return selected
+   return enteredAlgorithm
 };
 
 function transform(pointStructure) {
@@ -154,8 +143,9 @@ let newPointStructure = transform(oldPointStructure);
 function runProgram() {
    initialPrompt();
    scorerPrompt();
-   console.log(`Score for "${enteredWord}": `+selected.scorerFunction(enteredWord));
+   console.log(`Score for "${enteredWord}": `+scoringAlgorithms[enteredAlgorithm].scorerFunction(enteredWord));
 };
+
 
 // Don't write any code below this line //
 // And don't change these or your program will not run as expected //
