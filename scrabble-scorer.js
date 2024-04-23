@@ -21,8 +21,6 @@ const vowelBonusStructure = {
    3: ['A', 'E', 'I', 'O', 'U']
 };
 
-let enteredWord
-
 let oldScrabbleScorer={   
 name: 'Scrabble',
 description: 'The traditional scoring algorithm.',
