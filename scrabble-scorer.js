@@ -48,7 +48,7 @@ return letterPoints;
 
 
 function initialPrompt() {
-   enteredWord = input.question("Let's play some scrabble!\n\n Enter a word: ");
+   let enteredWord = input.question("Let's play some scrabble!\n\n Enter a word: ");
    return enteredWord
 };
 
@@ -120,8 +120,7 @@ const scoringAlgorithms = [simple, vowelBonus, scrabble];
 
 
 function scorerPrompt() {
-   
-   enteredAlgorithm = input.question("Which scoring algorithm would you like to use?\n\n 0 - Simple: One point per character\n 1 - Vowel Bonus: Vowels are worth 3 points\n 2 - Scrabble: Uses scrabble point system\n Enter 0, 1, or 2: ");
+   let enteredAlgorithm = input.question("Which scoring algorithm would you like to use?\n\n 0 - Simple: One point per character\n 1 - Vowel Bonus: Vowels are worth 3 points\n 2 - Scrabble: Uses scrabble point system\n Enter 0, 1, or 2: ");
    return enteredAlgorithm
 };
 
@@ -139,9 +138,9 @@ function transform(pointStructure) {
 let newPointStructure = transform(oldPointStructure);
 
 function runProgram() {
-   initialPrompt();
-   scorerPrompt();
-   console.log(`Score for "${enteredWord}": `+scoringAlgorithms[enteredAlgorithm].scorerFunction(enteredWord));
+   let word = initialPrompt()
+   let algorithm = scorerPrompt();
+   console.log(`Score for "${word}": `+scoringAlgorithms[algorithm].scorerFunction(word));
 };
 
 
